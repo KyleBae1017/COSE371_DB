@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Recommendation</title>
+  </head>
+  <body>
+    List of similar lectures<br />
+    If there is no lecture in the list, you should request!<br />
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+      </thead>
+
+      <tbody>
+        {% for lecture in lectures %}
+        <tr>
+          <td>{{ lecture[0] }}</td>
+          <td>{{ lecture[1] }}</td>
+          <td>{{ lecture[2] }}</td>
+          <td>{{ lecture[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+    Do you want to send the request? Then, click yes. <br />
+    If you don't want, then just click return. <br />
+    <form action="/request_final" method="post">
+      <input type="hidden" name="tutor" value="{{ req_tutor }}" />
+      <input type="hidden" name="lec_name" value="{{ req_lec_name }}" />
+      <input type="submit" name="send" value="Yes" />
+    </form>
+    <form action="/return" method="post">
+      <input type="submit" name="send" value="return to pay page" />
+    </form>
+  </body>
+</html>

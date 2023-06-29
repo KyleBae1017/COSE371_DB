@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign Up</title>
+  </head>
+  <h1>DB Online Learning Platform</h1>
+  <h2>Sign Up Page</h2>
+  <br />
+  <body>
+    <form action="/signup" method="post">
+      <label for="user_id">ID:</label><br />
+      <input id="user_id" type="text" name="id" /><br />
+
+      <label for="user_pwd">PASSWORD:</label><br />
+      <input id="user_pwd" type="text" name="password" /><br /><br />
+
+      <label for="user_role">Choose a role : </label>
+      <select name="role" id="user_role">
+        <option value="tutee">Tutee</option>
+        <option value="tutor">Tutor</option></select
+      ><br /><br />
+      <input type="submit" name="send" value="sign up" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Request Lectures</title>
+  </head>
+  <h1>Request Lectures</h1>
+  <body>
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+        <th>score</th>
+      </thead>
+
+      <tbody>
+        {% for lecture in lectures %}
+        <tr>
+          <td>{{ lecture[0] }}</td>
+          <td>{{ lecture[1] }}</td>
+          <td>{{ lecture[2] }}</td>
+          <td>{{ lecture[3] }}</td>
+          <td>{{ lecture[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+    <form action="/request_submit" method="post">
+      <label for="tutorname">Tutor Name:</label>
+      <input id="tutorname" type="text" name="tutor" /><br />
+
+      <label for="lecname">Lec Name:</label>
+      <input
+        id="lecname"
+        type="text"
+        minlength="1"
+        maxlength="19"
+        name="lec_name"
+      /><br />
+
+      <input type="submit" name="send" value="request" /><br />
+    </form>
+    <form action="/return" method="post">
+      <input type="submit" name="send" value="cancel" />
+    </form>
+  </body>
+</html>

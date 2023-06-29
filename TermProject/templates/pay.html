@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pay for Lectures</title>
+  </head>
+  <body>
+    Admin function
+    <form action="/admin" method="post">
+      <input type="submit" name="send" value="users info" />
+      <input type="submit" name="send" value="trades info" />
+    </form>
+    <br />
+    View lecture
+    <form action="/mylectures" method="post">
+      <input type="submit" name="send" value="my info" />
+    </form>
+    ================================================
+    <form action="/lecinfotable" method="post">
+      <table border="1">
+        <thead>
+          <th>popular subject</th>
+          <th>popular lecture</th>
+          <th>popular tutor</th>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{ popular[0] }}</td>
+            <td>{{ popular[1] }}</td>
+            <td>{{ popular[2] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <br />
+    <h1>User info</h1>
+    <form action="/logout" method="post">
+      current user: {{id}} / <input type="submit" name="send" value="Logout" />
+    </form>
+    credit: {{credit}}<br />
+    rating: {{rating}}
+    <h1>Lectures</h1>
+    * If score of lecture is zero, it means no one rated the score for it.<br /><br />
+    <form action="/add" method="post">
+      <input type="submit" name="send" value="add lecture" />
+    </form>
+    <form action="/request_lec" method="post">
+      <input type="submit" name="send" value="request lecture" />
+    </form>
+    <br />
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+        <th>score</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        {% for lecture in lectures %}
+        <tr>
+          <td>{{ lecture[0] }}</td>
+          <td>{{ lecture[1] }}</td>
+          <td>{{ lecture[2] }}</td>
+          <td>{{ lecture[3] }}</td>
+          <td>{{ lecture[4] }}</td>
+          <td>
+            <form action="/register" method="post">
+              <input type="hidden" name="code" value="{{ lecture[0] }}" />
+              <input type="hidden" name="name" value="{{ lecture[1] }}" />
+              <input type="hidden" name="price" value="{{ lecture[2] }}" />
+              <input type="hidden" name="tutor" value="{{ lecture[3] }}" />
+              <input type="submit" name="send" value="register" />
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

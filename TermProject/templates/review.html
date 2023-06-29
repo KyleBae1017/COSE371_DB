@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lecture review</title>
+  </head>
+  <body>
+    <h1>Lecture INFO</h1>
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{ lecture[0] }}</td>
+          <td>{{ lecture[1] }}</td>
+          <td>{{ lecture[2] }}</td>
+          <td>{{ lecture[3] }}</td>
+        </tr>
+      </tbody>
+    </table>
+    ================================================ <br />
+    How much are you satisfied for the lecture? Check the score between 1 to 10.
+    <br />
+    <form action="/review_confirm" method="post">
+      <input
+        type="number"
+        name="score"
+        value="score"
+        step="1"
+        min="1"
+        max="10"
+        required
+      />
+      <input type="hidden" name="code" value="{{ lecture[0] }}" />
+      <input type="hidden" name="name" value="{{ lecture[1] }}" />
+      <input type="hidden" name="price" value="{{ lecture[2] }}" />
+      <input type="hidden" name="tutor" value="{{ lecture[3] }}" />
+      <br /><br />
+      <input type="submit" name="send" value="submit" />
+    </form>
+    <br />
+    <form action="/return" method="post">
+      <input type="submit" name="send" value="cancel" />
+    </form>
+  </body>
+</html>

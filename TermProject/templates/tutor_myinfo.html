@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My info</title>
+  </head>
+  <body>
+    <h1>My Lecture</h1>
+    <table border="1">
+      <thead>
+        <th>subject</th>
+        <th>lecture name</th>
+        <th>tutee</th>
+        <th>price</th>
+      </thead>
+
+      <tbody>
+        {% for info in my_lecture %}
+        <tr>
+          <td>{{ info[0] }}</td>
+          <td>{{ info[1] }}</td>
+          <td>{{ info[2] }}</td>
+          <td>{{ info[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h1>Registered Lecture</h1>
+    <table border="1">
+      <thead>
+        <th>subject</th>
+        <th>lecture name</th>
+        <th>tutor</th>
+        <th>price</th>
+      </thead>
+
+      <tbody>
+        {% for info in regi_lecture %}
+        <tr>
+          <td>{{ info[0] }}</td>
+          <td>{{ info[1] }}</td>
+          <td>{{ info[2] }}</td>
+          <td>{{ info[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h1>Requested Lectures</h1>
+    <table border="1">
+      <thead>
+        <th>Requestor name</th>
+        <th>Lecture name</th>
+      </thead>
+
+      <tbody>
+        {% for req in reqs %}
+        <tr>
+          <td>{{ req[0] }}</td>
+          <td>{{ req[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <form action="/return" method="post">
+      <input type="submit" name="send" value="return to pay page" />
+    </form>
+  </body>
+</html>

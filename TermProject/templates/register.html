@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register Lecture</title>
+  </head>
+  <body>
+    <h1>Lecture INFO</h1>
+    <table border="1">
+      <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>tutor</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{ lecture[0] }}</td>
+          <td>{{ lecture[1] }}</td>
+          <td>{{ lecture[2] }}</td>
+          <td>{{ lecture[3] }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br /><br />
+    Your credit: {{credit}} <br />
+    Your rating: {{rating}} <br /><br />
+
+    Total price: {{lecture[2]}}<br />
+    Discount price: {{discount}}<br />
+    ================================================ <br />
+    Final price: {{final_price}}<br />
+    <form action="/confirm" method="post">
+      <input type="hidden" name="code" value="{{ lecture[0] }}" />
+      <input type="hidden" name="name" value="{{ lecture[1] }}" />
+      <input type="hidden" name="price" value="{{ lecture[2] }}" />
+      <input type="hidden" name="tutor" value="{{ lecture[3] }}" />
+      <input type="hidden" name="credit" value="{{ credit }}" />
+      <input type="hidden" name="final_price" value="{{ final_price }}" />
+      <input type="submit" name="send" value="confirm" />
+    </form>
+    <form action="/return" method="post">
+      <input type="submit" name="send" value="cancel" />
+    </form>
+  </body>
+</html>

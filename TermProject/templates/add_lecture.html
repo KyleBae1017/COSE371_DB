@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Lectures</title>
+  </head>
+  <h1>Add Lectures</h1>
+  <body>
+    Subject List<br />
+    <table border="1">
+      <thead></thead>
+
+      <tbody>
+        {% for subject in subjects %}
+        <tr>
+          <td>{{ subject[0] }}</td>
+          <td>{{ subject[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+    <form action="/add_lecture" method="post">
+      <label for="lec_code">Code:</label>
+      <input id="lec_code" type="text" name="code" /><br />
+
+      <label for="lec_name">Name:</label>
+      <input id="lec_name" type="text" maxlength="19" name="name" /><br />
+
+      <label for="lec_price">Price (Integer):</label>
+      <input id="lec_price" type="number" name="price" required /><br />
+
+      <input type="submit" name="send" value="add" /><br />
+    </form>
+    <form action="/return" method="post">
+      <input type="submit" name="send" value="cancel" />
+    </form>
+  </body>
+</html>

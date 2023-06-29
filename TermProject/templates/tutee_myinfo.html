@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My info</title>
+  </head>
+  <body>
+    <h1>My Lecture</h1>
+    <table border="1">
+      <thead>
+        <th>subject</th>
+        <th>lecture name</th>
+        <th>tutor</th>
+        <th>price</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        {% for info in regi_lecture %}
+        <tr>
+          <td>{{ info[0] }}</td>
+          <td>{{ info[1] }}</td>
+          <td>{{ info[2] }}</td>
+          <td>{{ info[3] }}</td>
+          <td>
+            <form action="/review" method="post">
+              <input type="hidden" name="subject" value="{{ info[0] }}" />
+              <input type="hidden" name="name" value="{{ info[1] }}" />
+              <input type="hidden" name="tutor" value="{{ info[2] }}" />
+              <input type="hidden" name="price" value="{{ info[3] }}" />
+              <input type="submit" name="send" value="review" />
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <form action="/return" method="post">
+      <input type="submit" name="send" value="return to pay page" />
+    </form>
+  </body>
+</html>
